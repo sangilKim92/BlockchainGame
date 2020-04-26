@@ -1,0 +1,30 @@
+{
+  "name": "rest_api",
+  "version": "1.0.0",
+  "description": "practice rest_api_delvelope",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index4.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sangilKim92/restApi.git"
+  },
+  "keywords": [
+    "VLsbfX39pWjHxW"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sangilKim92/restApi/issues"
+  },
+  "homepage": "https://github.com/sangilKim92/restApi#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.1"
+  }
+}
