@@ -11,7 +11,7 @@ contract Tetris{
     uint private max=5;//이 인원이 꽉차면 roleVoting이 돌아간다.
     
 
-    mapping(address=>bool) blockUser;
+    mapping(address=>bool) blockUser; 
     mapping(address=>uint) userCounts; //각 유저의 누적점수를 올리기 위한 용도    
     mapping(address=>uint) gameCheck;
 
@@ -33,6 +33,8 @@ contract Tetris{
     event etherToGameToken(uint house,uint myEther); //이더리움을 이용해서 GameToken을 구매한 경우 보기
     event checkToken(address gameToken); //GameToken, Draw토큰 컨트랙트 주소 보기
     event checkToken2(address drawToken); //GameToken, Draw토큰 컨트랙트 주소 보기
+    event gameTokenTodrawToken(uint myGametoken, uint myDrawtoken);
+    event drawToether(uint myehter);
 
     event resultVoting();
     event failVoting(string result);
@@ -41,6 +43,8 @@ contract Tetris{
     event Score(string tem); //시간이 1분 미만이라 누적점수 얻는 것을 실패한 event
 
     event attendResult(uint index); //응모에 참여했을 때, 몇번째 배열인지 확인시켜주는 용도
+
+    event useGameItem(bool result); //게임아이템을 사용했을 때 사용 용도
 
     constructor () public {
         owner = msg.sender; //컨트랙트를 배포하는 사람을 owner로 정의한다.
@@ -86,20 +90,20 @@ contract Tetris{
             lockMoney2 -= drawToken;
             lockMoney += gameToken;
 
-            myGameToken = GameToken(tokenAddress[0]).balanceOf(msg.sender);
-            HouseDrawToken = DrawToken(tokenAddress[1]).balanceOf(msg.sender);
+            uint gameT = GameToken(tokenAddress[0]).balanceOf(msg.sender);
+            uint drawT = DrawToken(tokenAddress[1]).balanceOf(msg.sender);
 
-            emit etherToGameToken(myGameToken, HouseDrawToken);
+            emit gameTokenTodrawToken(gameT, drawT);
         }
     }
 
     function startGame() external{//여기에서 유저가 게임을 시작하면 그 유저의 주소에 현재 시간을 저장시킨다.
         if(blockUser[msg.sender]==false){
-        gameCheck[msg.sender] = now;
+        gameCheck[msg.sender] = block.timestamp;
         blockUser[msg.sender] = true;
-        }else if(block.timestamp -gameCheck[msg.sender] > 10 minutes ){
+        }else if(block.timestamp -gameCheck[msg.sender] > 3 minutes ){
             gameCheck[msg.sender] = now;
-            blockUser[msg.sender] true;
+            blockUser[msg.sender] = true;
         }
     }
     function reFundEther(uint drawToken)external payable{
@@ -114,7 +118,7 @@ contract Tetris{
         if(DrawToken(tokenAddress[1]).transferFrom(msg.sender,owner,drawToken)){
             lockMoney2 += drawToken;
             msg.sender.transfer(drawToken);// 컨트랙트 내의 돈을 전달
-            emit etherToGameToken(myEther,myEther2-drawToken);//기존의 drawToken에다가 -해서 보여준다.
+            emit drawToether(myEther2-drawToken);//기존의 drawToken에다가 -해서 보여준다.
         }
     }
 
@@ -216,12 +220,12 @@ contract Tetris{
         //event를 사용해서 인자를 넘기면 front end에서는 args를 통해 인자를 사용할수 있다.
         if(blockUser[msg.sender]==true){
 
-            blockUser[msg.sender]=false;
-        if(3 minutes < block.timestamp-gameCheck[msg.sender]){
+            blockUser[msg.sender] = false;
+        if(1 minutes < block.timestamp - gameCheck[msg.sender]){
             //유저가 게임을 시작한 시간과 끝낸 시간이 1분보다 크면 무조건 주게 된다.
              require(0<scores,"your scores did not satisfy standardPoint");
             userCounts[msg.sender]++; //기준점수 이상 달성했으면 이 유저의 주소에 누적점수 1 추가
-             if(userCounts[msg.sender]>10){
+             if(userCounts[msg.sender]>9){
             //GameToken에서 토큰을 추가 발행한다.
             lockMoney++;//lockMoney가 스마트 컨트랙트가 가진 gametoken의 량이다.
             time++;
@@ -232,7 +236,7 @@ contract Tetris{
                 DrawToken(tokenAddress[1]).makeToken();
              }
             }
-            emit Score("게임시장이 3분 이상이고 누적점수 얻는 것에 성공하였습니다!");
+            emit Score("게임 이용 시간이 1분 이상이고 누적점수 얻는 것에 성공하였습니다!");
         }else{
             emit Score("게임이용시간이 1분 미만이기에 누적점수 얻기에 실패하였습니다.");
             //게임시작시간과 종료시간이 1분이 안되었기에 실패한다.
@@ -262,7 +266,7 @@ contract Tetris{
         uint myEther = GameToken(tokenAddress[0]).balanceOf(msg.sender);
         emit etherToGameToken(lockMoney, myEther);
     }
- 
+
     function checkHouse()external{ //배포가자 컨트랙트에 저장시킨 이더를 확인시켜준다.
         uint he;
         he = lockMoney;
@@ -274,9 +278,17 @@ contract Tetris{
         emit checkHouseEther(he);
     }
 
-    function useItem()external view{
+    function useItem()external {
         //hanyang token으로 아이템을 사용한다.
-        require(userCounts[msg.sender]>3,"누적점수");
+        uint myEther = GameToken(tokenAddress[0]).balanceOf(msg.sender);
+        bool result = false;
+        if(myEther>=1){
+            bool result = GameToken(tokenAddress[0]).charging(1);
+            lockMoney++;
+        }else{
+            bool result = false;
+        }
+        emit useGameItem(result);
     }
 
 

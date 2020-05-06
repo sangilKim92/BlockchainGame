@@ -313,7 +313,7 @@
         "id": 405,
         "nodeType": "ImportDirective",
         "scope": 763,
-        "sourceUnit": 1850,
+        "sourceUnit": 1944,
         "src": "27:21:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -327,10 +327,10 @@
               "id": 406,
               "name": "Token",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1849,
+              "referencedDeclaration": 1943,
               "src": "74:5:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Token_$1849",
+                "typeIdentifier": "t_contract$_Token_$1943",
                 "typeString": "contract Token"
               }
             },
@@ -340,7 +340,7 @@
           }
         ],
         "contractDependencies": [
-          1849
+          1943
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -348,7 +348,7 @@
         "id": 762,
         "linearizedBaseContracts": [
           762,
-          1849
+          1943
         ],
         "name": "GameToken",
         "nodeType": "ContractDefinition",
@@ -1270,7 +1270,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1864,
+                                "referencedDeclaration": 1958,
                                 "src": "1728:3:1",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -1337,7 +1337,7 @@
                             "name": "Transfer",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1840,
+                            "referencedDeclaration": 1934,
                             "src": "1719:8:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -1494,7 +1494,7 @@
             "scope": 762,
             "src": "1049:794:1",
             "stateMutability": "nonpayable",
-            "superFunction": 1803,
+            "superFunction": 1897,
             "visibility": "external"
           },
           {
@@ -2221,7 +2221,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1864,
+                              "referencedDeclaration": 1958,
                               "src": "3123:3:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -2582,7 +2582,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1864,
+                                "referencedDeclaration": 1958,
                                 "src": "3268:3:1",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -2702,7 +2702,7 @@
                             "name": "Transfer",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1840,
+                            "referencedDeclaration": 1934,
                             "src": "3309:8:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -2886,7 +2886,7 @@
             "scope": 762,
             "src": "2731:695:1",
             "stateMutability": "nonpayable",
-            "superFunction": 1814,
+            "superFunction": 1908,
             "visibility": "external"
           },
           {
@@ -3020,7 +3020,7 @@
             "scope": 762,
             "src": "3436:117:1",
             "stateMutability": "view",
-            "superFunction": 1794,
+            "superFunction": 1888,
             "visibility": "external"
           },
           {
@@ -3063,7 +3063,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1864,
+                            "referencedDeclaration": 1958,
                             "src": "3662:3:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -3157,7 +3157,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1864,
+                          "referencedDeclaration": 1958,
                           "src": "3717:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -3224,7 +3224,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1848,
+                      "referencedDeclaration": 1942,
                       "src": "3708:8:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -3378,7 +3378,7 @@
             "scope": 762,
             "src": "3563:213:1",
             "stateMutability": "nonpayable",
-            "superFunction": 1823,
+            "superFunction": 1917,
             "visibility": "public"
           },
           {
@@ -3566,7 +3566,7 @@
             "scope": 762,
             "src": "3786:144:1",
             "stateMutability": "view",
-            "superFunction": 1832,
+            "superFunction": 1926,
             "visibility": "external"
           },
           {
@@ -3645,7 +3645,7 @@
             "scope": 762,
             "src": "3940:101:1",
             "stateMutability": "view",
-            "superFunction": 1787,
+            "superFunction": 1881,
             "visibility": "external"
           },
           {
@@ -3764,10 +3764,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1867,
-                        1868
+                        1961,
+                        1962
                       ],
-                      "referencedDeclaration": 1868,
+                      "referencedDeclaration": 1962,
                       "src": "4125:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4386,7 +4386,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1864,
+                                "referencedDeclaration": 1958,
                                 "src": "4733:3:1",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -4453,7 +4453,7 @@
                             "name": "Transfer",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1840,
+                            "referencedDeclaration": 1934,
                             "src": "4724:8:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -4756,7 +4756,7 @@
         "id": 405,
         "nodeType": "ImportDirective",
         "scope": 763,
-        "sourceUnit": 1850,
+        "sourceUnit": 1944,
         "src": "27:21:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -4770,10 +4770,10 @@
               "id": 406,
               "name": "Token",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1849,
+              "referencedDeclaration": 1943,
               "src": "74:5:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Token_$1849",
+                "typeIdentifier": "t_contract$_Token_$1943",
                 "typeString": "contract Token"
               }
             },
@@ -4783,7 +4783,7 @@
           }
         ],
         "contractDependencies": [
-          1849
+          1943
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -4791,7 +4791,7 @@
         "id": 762,
         "linearizedBaseContracts": [
           762,
-          1849
+          1943
         ],
         "name": "GameToken",
         "nodeType": "ContractDefinition",
@@ -5713,7 +5713,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1864,
+                                "referencedDeclaration": 1958,
                                 "src": "1728:3:1",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -5780,7 +5780,7 @@
                             "name": "Transfer",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1840,
+                            "referencedDeclaration": 1934,
                             "src": "1719:8:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -5937,7 +5937,7 @@
             "scope": 762,
             "src": "1049:794:1",
             "stateMutability": "nonpayable",
-            "superFunction": 1803,
+            "superFunction": 1897,
             "visibility": "external"
           },
           {
@@ -6664,7 +6664,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1864,
+                              "referencedDeclaration": 1958,
                               "src": "3123:3:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -7025,7 +7025,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1864,
+                                "referencedDeclaration": 1958,
                                 "src": "3268:3:1",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -7145,7 +7145,7 @@
                             "name": "Transfer",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1840,
+                            "referencedDeclaration": 1934,
                             "src": "3309:8:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -7329,7 +7329,7 @@
             "scope": 762,
             "src": "2731:695:1",
             "stateMutability": "nonpayable",
-            "superFunction": 1814,
+            "superFunction": 1908,
             "visibility": "external"
           },
           {
@@ -7463,7 +7463,7 @@
             "scope": 762,
             "src": "3436:117:1",
             "stateMutability": "view",
-            "superFunction": 1794,
+            "superFunction": 1888,
             "visibility": "external"
           },
           {
@@ -7506,7 +7506,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1864,
+                            "referencedDeclaration": 1958,
                             "src": "3662:3:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -7600,7 +7600,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1864,
+                          "referencedDeclaration": 1958,
                           "src": "3717:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -7667,7 +7667,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1848,
+                      "referencedDeclaration": 1942,
                       "src": "3708:8:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -7821,7 +7821,7 @@
             "scope": 762,
             "src": "3563:213:1",
             "stateMutability": "nonpayable",
-            "superFunction": 1823,
+            "superFunction": 1917,
             "visibility": "public"
           },
           {
@@ -8009,7 +8009,7 @@
             "scope": 762,
             "src": "3786:144:1",
             "stateMutability": "view",
-            "superFunction": 1832,
+            "superFunction": 1926,
             "visibility": "external"
           },
           {
@@ -8088,7 +8088,7 @@
             "scope": 762,
             "src": "3940:101:1",
             "stateMutability": "view",
-            "superFunction": 1787,
+            "superFunction": 1881,
             "visibility": "external"
           },
           {
@@ -8207,10 +8207,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1867,
-                        1868
+                        1961,
+                        1962
                       ],
-                      "referencedDeclaration": 1868,
+                      "referencedDeclaration": 1962,
                       "src": "4125:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -8829,7 +8829,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1864,
+                                "referencedDeclaration": 1958,
                                 "src": "4733:3:1",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -8896,7 +8896,7 @@
                             "name": "Transfer",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1840,
+                            "referencedDeclaration": 1934,
                             "src": "4724:8:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -9178,7 +9178,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2020-04-02T08:24:18.668Z",
+  "updatedAt": "2020-05-05T07:30:40.827Z",
   "devdoc": {
     "methods": {}
   },

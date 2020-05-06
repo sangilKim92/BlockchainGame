@@ -174,6 +174,7 @@ class Tetris extends Component {
       scores: 0,
       goal: 0,
       TotalScore: 1,
+      item: false,
     };
     this.attachEventListeners=this.attachEventListeners.bind(this);
     this.spawnPiece=this.spawnPiece.bind(this);
@@ -205,7 +206,12 @@ class Tetris extends Component {
 
         //instance.events.method()로 이벤트관리할 수 있고 web3.eth.subscribe()로도 이벤트 관리 가능
 
-        
+
+        instance.events.useGameItem()
+            .on('data', (event) => this.useGame(event))
+            .on('error' , (error) => console.log(error));
+        this.setState({web3, accounts, contract: instance});
+          
 
         instance.events.Score() //contract주소가 일치하지 않는 문제를 지금 겪는중 맞춰야 한다.
         .on('data', (event) => this.resultScore(event))
@@ -225,6 +231,10 @@ class Tetris extends Component {
     console.log(result.returnValues);
     const myScore = parseInt(result.returnValues.scores);
     this.setState({TotalScore: myScore});     
+  };
+
+  useGame = (result) => {
+    this.setState({item: result.returnValues.result});
   };
 
   resultScore =(result) => { //여기서 emit발생한 누적점수를 볼수있게 수정.
@@ -254,6 +264,7 @@ class Tetris extends Component {
                 board:this.state.board.map(_=> Array(COLS).fill(false)),
                 activePiece:null,
                 goal:15,
+                item:false,
               });
           if(this.state.scores>=1){//this.state.accounts[0]은 메타마스크에 접속한 주소
             console.log(this.state.contract);
@@ -282,7 +293,8 @@ class Tetris extends Component {
           y: this.state.activePiece.y + 1,
         },
       });
-    }, 380);
+    }, this.state.item ? 500:380);
+
   }
   
   spawnPiece() {//나오는 테트리스 결정하기
@@ -473,6 +485,18 @@ class Tetris extends Component {
     } 
     return board;
   } 
+  useGameToken = async() =>{
+    if(!this.state.web3){
+      alert("메타마스크가 연결되지 않았습니다.");
+      return;
+    }
+      try{
+        const r= await this.state.contract.methods.useItem().send({from : this.state.accounts[0]});
+        alert(this.state.item);      
+      }catch(error){
+        console.log(error.message);
+      }
+  }
   checkScore= async ()=>{
     if(!this.state.web3){
       alert("메타마스크에 연결되지 않았습니다. F5 버튼을 눌러 로그인하십시오.");
@@ -480,9 +504,7 @@ class Tetris extends Component {
     }
     console.log(this.state.contract);
     try{
-      console.log(this.state.accounts)
      const r= await this.state.contract.methods.check().send({from: this.state.accounts[0]});
-     console.log(r.transactionHash);
     }
     catch(error){
       console.log(error.message);
@@ -528,10 +550,10 @@ class Tetris extends Component {
           </div>
               <div className="StyledWrap"><br/><br/>  
               <button className="StyledButton" onClick={this.checkScore}>누적점수 확인</button>
+              <button className="StyledButton" onClick={this.useGameToken}>아이템사용</button>
                   <div className="StyledTetris">
                     누적점수: {this.state.TotalScore}                                   
                   </div>
-                  <div className="StyledTetris">목표 점수: 15</div>
                   <div className="StyledTetris">달성 점수: {this.state.scores}</div>
                  <button className="StyledButton" onClick={this.startGame}>게임시작!</button>
                 </div>

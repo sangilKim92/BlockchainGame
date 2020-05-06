@@ -59,21 +59,34 @@ class Avatar extends Component{
             instance.events.etherToGameToken()
                 .on('data', (event) => this.checkGameToken(event))
                 .on('error', (error) => console.log(error));
+            this.setState({web3, accounts, contract:instance});
+
+            instance.events.gameTokenTodrawToken()
+                .on('data', (event) => this.gametoDraw(event))
+                .on('error', (error) => console.log(error));
+
+            this.setState({web3, accounts, contract:instance});
             
             instance.events.resultVoting()
                 .on('data', (event) => this.resultVoting(event))
                 .on('error', (error) => console.log(error));
 
+            this.setState({web3, accounts, contract:instance});
+
             instance.events.checkArgument()
                 .on('data', (event) => this.checkArgument(event))
                 .on('error', (error) => console.log(error));
+
+            this.setState({web3, accounts, contract:instance});
 
             instance.events.congrat()
                 .on('data', (event) => this.congrat(event))
                 .on('error', (error) => console.log(error));
                 
+            this.setState({web3, accounts, contract:instance});
+
             instance.events.attendResult()
-                .on('data', (event) => this.attendVoting(event))
+                .on('data', (event) => this.attend(event))
                 .on('error', (error) => console.log(error));
 
             this.setState({web3, accounts, contract: instance},);
@@ -92,10 +105,9 @@ class Avatar extends Component{
 
       checkGameToken= async(result)=>{
         //game token과 drawtoken을 보여줘야 한다.
-        const game = parseInt(result.returnValues.house);
+        const game = parseInt(result.returnValues.myEther);
     
-        const draw = parseInt(result.returnValues.myEther);
-     this.setState({gameToken: game, drawToken:draw});//앞에걸 game, 뒤에걸 draw로 하자.     
+     this.setState({gameToken: game});//앞에걸 game, 뒤에걸 draw로 하자.     
         //이 메소드는 샀을때와 새로고침 버튼을 클릭했을때 보여주기로 하자.
       }
 
@@ -104,18 +116,24 @@ class Avatar extends Component{
         alert(result.returnValues.receiver);
         //이 메소드는 샀을때와 새로고침 버튼을 클릭했을때 보여주기로 하자.
       }
+      gametoDraw = async(result) =>{
+        const game= parseInt(result.returnValues.myGametoken);
+        const draw= parseInt(result.returnValues.myDrawToken);
+        
+        this.setState({gameToken: game, drawToken:draw});
+      } 
 
       checkArgument = async (result) =>{
         
         this.setState({addList: []});
         let fir= result.returnValues.firstBlocknumber;
         let sec= result.returnValues.secondBlocknumber;
-          
+        const list= result.returnValues.output;
         this.setState({addList: result.returnValues.output, firstBlock:fir, secondBlock: sec});
         console.log(this.state.addList);
       }
 
-      attendVoting = async(result)=>{
+      attend = async(result)=>{
         alert(result.returnValues.index+"번째로 등록하셨습니다. \n");
       }
 
@@ -131,6 +149,7 @@ class Avatar extends Component{
         }else if(this.state.before=="ether" && this.state.after=="GameToken"){
           var cal=e.target.value*(10**18);
           this.setState({afterMoney:cal,num:2});
+          alert(this.state.num);
         }else{
           this.setState({num:4});
           alert("교환하려는 돈이 잘못되었습니다.");
@@ -180,7 +199,8 @@ class Avatar extends Component{
                }
            }else{
              alert("바꿀수 없는 조합입니다.");
-           }
+           
+            }
       }
 
       checkArg = async() =>{
@@ -228,7 +248,7 @@ class Avatar extends Component{
         padding: "8px",
         margin: "8px"
       };
-  
+ 
   
         return (
           <div>
@@ -307,12 +327,13 @@ class Avatar extends Component{
                     <Panel.Title>당첨자 주소확인 및 블록넘버 확인</Panel.Title>
                   </Panel.Heading>
                   <Panel.Body>
+                    응모한 이용자 주소: {this.state.addList.map(add =>{
+                      return add+"\n";
+                    })}<br/>
                     첫번째 블록 주소: {this.state.firstBlock} <br/>
                     두번째 블록 주소: {this.state.secondBlock} <br/>
 
-                  <ol>
-                    {this.state.addList}
-                  </ol>
+         
 
                   </Panel.Body>
                   <Panel.Footer>
